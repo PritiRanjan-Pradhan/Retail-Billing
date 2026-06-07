@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  RetailPOS.Domain -> F:\Freelance\RetailBilling\src\RetailPOS.Domain\bin\Debug\net8.0\RetailPOS.Domain.dll
+  RetailPOS.Application -> F:\Freelance\RetailBilling\src\RetailPOS.Application\bin\Debug\net8.0\RetailPOS.Application.dll
+  RetailPOS.Persistence -> F:\Freelance\RetailBilling\src\RetailPOS.Persistence\bin\Debug\net8.0\RetailPOS.Persistence.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.60

@@ -13,6 +13,7 @@ namespace RetailPOS.Domain.Entities
 
         public DateTimeOffset Date { get; private set; }
         public Guid? CustomerId { get; private set; }
+        public Customer? Customer { get; private set; }
         public IReadOnlyCollection<SaleItem> Items => _items.AsReadOnly();
         public decimal TaxAmount { get; private set; }
         public decimal DiscountAmount { get; private set; }

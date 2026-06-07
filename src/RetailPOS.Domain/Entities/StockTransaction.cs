@@ -8,6 +8,7 @@ namespace RetailPOS.Domain.Entities
     public class StockTransaction : Entity
     {
         public Guid ProductId { get; private set; }
+        public Product? Product { get; private set; }
         public int QuantityChange { get; private set; }
         public StockTransactionType TransactionType { get; private set; }
         public DateTimeOffset Date { get; private set; }
