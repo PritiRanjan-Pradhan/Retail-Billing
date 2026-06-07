@@ -1,0 +1,41 @@
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# Dotnet
+*.db
+*.db-journal
+*.vsix
+
+# Package directories
+*.nupkg
+packages/
+
+# Publish output
+publish/
+
+# User-specific files
+*.dotCover
+*.ncrunch*
+*.ReSharper*
+
+# Logs
+*.log
+
+# Backup files
+*~
+*.tmp
+
+# Ignore Visual Studio Code workspace storage
+.vscode/

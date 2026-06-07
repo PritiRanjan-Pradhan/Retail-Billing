@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C2DCB0CB-2121-4E72-B7E4-BEF38539AE49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.Domain", "src\RetailPOS.Domain\RetailPOS.Domain.csproj", "{A1DCBD49-22B5-493F-BA74-B66DC67A8FD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.Application", "src\RetailPOS.Application\RetailPOS.Application.csproj", "{82196802-295D-497F-BD56-69CB1904B0AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.Persistence", "src\RetailPOS.Persistence\RetailPOS.Persistence.csproj", "{5E3E272D-D159-4389-9EC2-8995CDE5A2EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.Infrastructure", "src\RetailPOS.Infrastructure\RetailPOS.Infrastructure.csproj", "{BA1F9C18-F33A-48CA-BB19-1DCB078238AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.WPF", "src\RetailPOS.WPF\RetailPOS.WPF.csproj", "{5B30A9A8-A4AE-4410-9373-10A3E7081214}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1DCBD49-22B5-493F-BA74-B66DC67A8FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1DCBD49-22B5-493F-BA74-B66DC67A8FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1DCBD49-22B5-493F-BA74-B66DC67A8FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1DCBD49-22B5-493F-BA74-B66DC67A8FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82196802-295D-497F-BD56-69CB1904B0AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82196802-295D-497F-BD56-69CB1904B0AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82196802-295D-497F-BD56-69CB1904B0AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82196802-295D-497F-BD56-69CB1904B0AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3E272D-D159-4389-9EC2-8995CDE5A2EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3E272D-D159-4389-9EC2-8995CDE5A2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3E272D-D159-4389-9EC2-8995CDE5A2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3E272D-D159-4389-9EC2-8995CDE5A2EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA1F9C18-F33A-48CA-BB19-1DCB078238AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1F9C18-F33A-48CA-BB19-1DCB078238AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1F9C18-F33A-48CA-BB19-1DCB078238AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1F9C18-F33A-48CA-BB19-1DCB078238AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B30A9A8-A4AE-4410-9373-10A3E7081214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B30A9A8-A4AE-4410-9373-10A3E7081214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B30A9A8-A4AE-4410-9373-10A3E7081214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B30A9A8-A4AE-4410-9373-10A3E7081214}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1DCBD49-22B5-493F-BA74-B66DC67A8FD8} = {C2DCB0CB-2121-4E72-B7E4-BEF38539AE49}
+		{82196802-295D-497F-BD56-69CB1904B0AD} = {C2DCB0CB-2121-4E72-B7E4-BEF38539AE49}
+		{5E3E272D-D159-4389-9EC2-8995CDE5A2EB} = {C2DCB0CB-2121-4E72-B7E4-BEF38539AE49}
+		{BA1F9C18-F33A-48CA-BB19-1DCB078238AD} = {C2DCB0CB-2121-4E72-B7E4-BEF38539AE49}
+		{5B30A9A8-A4AE-4410-9373-10A3E7081214} = {C2DCB0CB-2121-4E72-B7E4-BEF38539AE49}
+	EndGlobalSection
+EndGlobal
