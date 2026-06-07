@@ -26,12 +26,13 @@ public partial class App : System.Windows.Application
                     options.UseSqlite("Data Source=retailpos.db"));
 
                 // ViewModels
-                services.AddTransient<RetailPOS.WPF.ViewModels.ProductsViewModel>();
+                services.AddTransient<RetailPOS.WPF.ViewModels.ProductsViewModel>(sp => ActivatorUtilities.CreateInstance<RetailPOS.WPF.ViewModels.ProductsViewModel>(sp));
                 services.AddSingleton<RetailPOS.WPF.ViewModels.MainWindowViewModel>();
 
                 // Views / Main window
                 services.AddSingleton<MainWindow>();
                 services.AddTransient<RetailPOS.WPF.Views.ProductsView>();
+                services.AddTransient<RetailPOS.WPF.Views.ProductEditWindow>();
             })
             .Build();
 

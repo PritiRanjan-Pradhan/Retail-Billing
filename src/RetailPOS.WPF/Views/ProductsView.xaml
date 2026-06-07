@@ -5,7 +5,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
     <Grid>
-        <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" IsReadOnly="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ToolBarTray Grid.Row="0">
+            <ToolBar>
+                <Button Content="Add" Command="{Binding AddCommand}" />
+                <Button Content="Edit" Command="{Binding EditCommand}" />
+                <Button Content="Delete" Command="{Binding DeleteCommand}" />
+                <Button Content="Refresh" Command="{Binding LoadCommand}" />
+            </ToolBar>
+        </ToolBarTray>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Selected, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
                 <DataGridTextColumn Header="SKU" Binding="{Binding SKU}" />
