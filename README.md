@@ -24,6 +24,22 @@ Or run the commands manually. The script will:
 - Use Serilog for structured logging.
 - Use FluentValidation for input validation.
 
+## Build and Run
+From the repository root:
+
+```powershell
+cd d:\Freeance\Retail-Billing
+dotnet build RetailPOS.sln
+dotnet run --project src\RetailPOS.WPF\RetailPOS.WPF.csproj
+```
+
+This solution uses:
+- `RetailPOS.Domain` for core entities and value objects
+- `RetailPOS.Application` for business logic and interfaces
+- `RetailPOS.Persistence` for EF Core data access
+- `RetailPOS.Infrastructure` for cross-cutting concerns
+- `RetailPOS.WPF` for the UI
+
 ## Next Steps (Phase 2)
 - Implement Domain entities and value objects in `src/RetailPOS.Domain`.
 - Define repository interfaces in `src/RetailPOS.Application`.
