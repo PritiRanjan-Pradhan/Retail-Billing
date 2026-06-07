@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RetailPOS.WPF"
+        xmlns:views="clr-namespace:RetailPOS.WPF.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -14,6 +15,16 @@
 
         <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="Bold" Margin="8" />
 
-        <views:ProductsView Grid.Row="1" DataContext="{Binding ProductsViewModel}" xmlns:views="clr-namespace:RetailPOS.WPF.Views" />
+        <TabControl Grid.Row="1" Margin="8">
+            <TabItem Header="Products">
+                <views:ProductsView DataContext="{Binding ProductsViewModel}" />
+            </TabItem>
+            <TabItem Header="Customers">
+                <views:CustomersView DataContext="{Binding CustomersViewModel}" />
+            </TabItem>
+            <TabItem Header="Sales">
+                <views:SalesView DataContext="{Binding SalesViewModel}" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

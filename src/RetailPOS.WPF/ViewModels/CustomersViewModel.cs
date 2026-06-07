@@ -11,25 +11,25 @@ using RetailPOS.Domain.Entities;
 
 namespace RetailPOS.WPF.ViewModels
 {
-    public class ProductListItem
+    public class CustomerListItem
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string SKU { get; set; } = string.Empty;
-        public decimal Price { get; set; }
-        public int StockQuantity { get; set; }
+        public string Mobile { get; set; } = string.Empty;
+        public string? Email { get; set; }
+        public string? Address { get; set; }
     }
 
-    public class ProductsViewModel : ObservableObject
+    public class CustomersViewModel : ObservableObject
     {
-        private readonly IProductRepository _productRepository;
+        private readonly ICustomerRepository _customerRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IServiceProvider _serviceProvider;
 
-        public ObservableCollection<ProductListItem> Items { get; } = new();
+        public ObservableCollection<CustomerListItem> Items { get; } = new();
 
-        private ProductListItem? _selected;
-        public ProductListItem? Selected
+        private CustomerListItem? _selected;
+        public CustomerListItem? Selected
         {
             get => _selected;
             set
@@ -47,9 +47,9 @@ namespace RetailPOS.WPF.ViewModels
         public IAsyncRelayCommand EditCommand { get; }
         public IAsyncRelayCommand DeleteCommand { get; }
 
-        public ProductsViewModel(IProductRepository productRepository, IUnitOfWork unitOfWork, IServiceProvider serviceProvider)
+        public CustomersViewModel(ICustomerRepository customerRepository, IUnitOfWork unitOfWork, IServiceProvider serviceProvider)
         {
-            _productRepository = productRepository;
+            _customerRepository = customerRepository;
             _unitOfWork = unitOfWork;
             _serviceProvider = serviceProvider;
 
@@ -61,18 +61,18 @@ namespace RetailPOS.WPF.ViewModels
 
         public async Task LoadAsync()
         {
-            var products = await _productRepository.GetAllAsync();
+            var customers = await _customerRepository.GetAllAsync();
             Items.Clear();
-            foreach (var p in products.Select(p => new ProductListItem
+            foreach (var c in customers.Select(c => new CustomerListItem
             {
-                Id = p.Id,
-                Name = p.Name,
-                SKU = p.SKU,
-                Price = p.Price,
-                StockQuantity = p.StockQuantity
+                Id = c.Id,
+                Name = c.Name,
+                Mobile = c.Mobile,
+                Email = c.Email?.ToString(),
+                Address = c.Address
             }))
             {
-                Items.Add(p);
+                Items.Add(c);
             }
 
             EditCommand.NotifyCanExecuteChanged();
@@ -81,15 +81,15 @@ namespace RetailPOS.WPF.ViewModels
 
         private async Task AddAsync()
         {
-            var window = _serviceProvider.GetService<RetailPOS.WPF.Views.ProductEditWindow>() ?? new RetailPOS.WPF.Views.ProductEditWindow();
-            var vm = new ProductEditViewModel();
+            var window = _serviceProvider.GetService<RetailPOS.WPF.Views.CustomerEditWindow>() ?? new RetailPOS.WPF.Views.CustomerEditWindow();
+            var vm = new CustomerEditViewModel();
             window.DataContext = vm;
 
             var result = window.ShowDialog();
             if (result == true)
             {
-                var product = new Product(vm.Name, vm.SKU, vm.Price, vm.StockQuantity, 0, null, null);
-                await _productRepository.AddAsync(product);
+                var customer = new Customer(vm.Name, vm.Mobile, vm.Email, vm.Address);
+                await _customerRepository.AddAsync(customer);
                 await _unitOfWork.SaveChangesAsync();
                 await LoadAsync();
             }
@@ -99,19 +99,19 @@ namespace RetailPOS.WPF.ViewModels
         {
             if (Selected == null) return;
 
-            var product = await _productRepository.GetByIdAsync(Selected.Id);
-            if (product == null) return;
+            var customer = await _customerRepository.GetByIdAsync(Selected.Id);
+            if (customer == null) return;
 
-            var window = _serviceProvider.GetService<RetailPOS.WPF.Views.ProductEditWindow>() ?? new RetailPOS.WPF.Views.ProductEditWindow();
-            var vm = new ProductEditViewModel();
-            vm.LoadFrom(product);
+            var window = _serviceProvider.GetService<RetailPOS.WPF.Views.CustomerEditWindow>() ?? new RetailPOS.WPF.Views.CustomerEditWindow();
+            var vm = new CustomerEditViewModel();
+            vm.LoadFrom(customer);
             window.DataContext = vm;
 
             var result = window.ShowDialog();
             if (result == true)
             {
-                product.Update(vm.Name, vm.SKU, vm.Price, product.ReorderLevel, null, product.CategoryId);
-                _productRepository.Update(product);
+                customer.UpdateContact(vm.Name, vm.Mobile, vm.Email, vm.Address);
+                _customerRepository.Update(customer);
                 await _unitOfWork.SaveChangesAsync();
                 await LoadAsync();
             }
@@ -124,10 +124,10 @@ namespace RetailPOS.WPF.ViewModels
             if (MessageBox.Show($"Delete {Selected.Name}?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
                 return;
 
-            var product = await _productRepository.GetByIdAsync(Selected.Id);
-            if (product == null) return;
+            var customer = await _customerRepository.GetByIdAsync(Selected.Id);
+            if (customer == null) return;
 
-            _productRepository.Remove(product);
+            _customerRepository.Remove(customer);
             await _unitOfWork.SaveChangesAsync();
             await LoadAsync();
         }

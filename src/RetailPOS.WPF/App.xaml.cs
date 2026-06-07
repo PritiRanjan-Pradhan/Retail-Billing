@@ -3,6 +3,8 @@ using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RetailPOS.Application.Interfaces;
+using RetailPOS.Infrastructure.Services;
 using RetailPOS.Persistence.Contexts;
 using RetailPOS.Persistence.DependencyInjection;
 
@@ -27,12 +29,19 @@ public partial class App : System.Windows.Application
 
                 // ViewModels
                 services.AddTransient<RetailPOS.WPF.ViewModels.ProductsViewModel>(sp => ActivatorUtilities.CreateInstance<RetailPOS.WPF.ViewModels.ProductsViewModel>(sp));
+                services.AddTransient<RetailPOS.WPF.ViewModels.CustomersViewModel>(sp => ActivatorUtilities.CreateInstance<RetailPOS.WPF.ViewModels.CustomersViewModel>(sp));
+                services.AddTransient<RetailPOS.WPF.ViewModels.SalesViewModel>(sp => ActivatorUtilities.CreateInstance<RetailPOS.WPF.ViewModels.SalesViewModel>(sp));
                 services.AddSingleton<RetailPOS.WPF.ViewModels.MainWindowViewModel>();
 
                 // Views / Main window
                 services.AddSingleton<MainWindow>();
                 services.AddTransient<RetailPOS.WPF.Views.ProductsView>();
+                services.AddTransient<RetailPOS.WPF.Views.CustomersView>();
+                services.AddTransient<RetailPOS.WPF.Views.SalesView>();
                 services.AddTransient<RetailPOS.WPF.Views.ProductEditWindow>();
+                services.AddTransient<RetailPOS.WPF.Views.CustomerEditWindow>();
+
+                services.AddSingleton<IReceiptPrinter, ReceiptPrinter>();
             })
             .Build();
 
